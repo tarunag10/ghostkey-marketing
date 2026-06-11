@@ -1,0 +1,1 @@
+Initial release of GhostKey for Safari. Hide intrusive sign-in prompts, restore page scrolling, manage per-site controls, and keep extension settings local on your device.

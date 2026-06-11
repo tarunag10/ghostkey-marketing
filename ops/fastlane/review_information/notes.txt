@@ -1,0 +1,28 @@
+GhostKey is a Safari Web Extension for iPhone, iPad, and Mac. Its purpose is to reduce interruptions from intrusive sign-in and signup prompts that cover a webpage, lock scrolling, blur content, or block normal page interaction.
+
+The containing app is the standard Safari extension wrapper. It tells the user how to enable GhostKey in Safari Settings or Safari Extensions preferences. The functional product is the Safari extension after the user enables it.
+
+How to test:
+1. Install and open GhostKey.
+2. Enable the GhostKey Safari extension in Settings > Safari > Extensions on iOS/iPadOS, or Safari > Settings > Extensions on macOS.
+3. Grant website access for the test page when Safari asks.
+4. Visit a webpage that displays a sign-in or signup overlay, or use a page with a modal that blocks scrolling.
+5. GhostKey will detect high-confidence login/signup overlays, hide the matching blocker, and restore scrolling or pointer interaction.
+6. Open the extension popup to pause GhostKey for the current site, undo the most recent page change, or change settings.
+
+Permission rationale:
+- activeTab: lets the extension popup apply the user's current-site controls to the active Safari tab.
+- storage: saves local preferences such as enabled state, aggressive mode, debug mode, disabled sites, and allowlisted hosts.
+- Content script access: required to inspect page DOM elements locally because login overlays, scroll locks, blurred content, and backdrops are implemented inside web pages.
+
+Privacy and safety:
+GhostKey does not require sign-in, does not collect personal data, does not track users, does not use analytics, and does not send page content, browsing history, URLs, account information, payment information, or form contents to developer servers. Extension settings are stored locally on the user's device.
+
+GhostKey is not a tool for accessing paid content. It does not remove cookie consent banners, does not automate logins, does not scrape content, and does not guarantee access to content that a website requires a user to sign in or pay to view. Built-in safety rules avoid checkout, payment, upload, navigation, and cookie consent flows.
+
+Support URL: https://tarunag10.github.io/GhostKey/support.html
+Privacy Policy: https://tarunag10.github.io/GhostKey/privacy-policy.html
+Bundle ID: com.tarunagarwal.ghostkey
+Extension Bundle ID: com.tarunagarwal.ghostkey.Extension
+Version: 1.0
+Build: 1

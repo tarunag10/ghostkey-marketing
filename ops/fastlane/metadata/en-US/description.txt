@@ -1,0 +1,16 @@
+GhostKey is a Safari extension that helps reduce interruptions from intrusive sign-in prompts that cover a page, lock scrolling, blur content, or block normal page interaction.
+
+After you enable the extension in Safari, GhostKey runs locally in your browser. It looks for high-confidence login and signup overlays, hides only the matching blocker elements, and restores basic page usability such as scrolling and pointer events. You stay in control with per-site controls, an allowlist, conservative detection by default, optional aggressive mode, and one-click undo.
+
+Key features:
+
+- Hide high-confidence sign-in prompts and page overlays.
+- Restore page scrolling and interaction after blockers are hidden.
+- Pause GhostKey on the current site.
+- Add sites to an allowlist from Settings.
+- Undo the most recent page change from the extension popup.
+- Use conservative detection by default, with optional aggressive mode for stubborn prompts.
+- Avoid checkout, payment, upload, navigation, and cookie consent flows.
+- Store extension settings locally on your device.
+
+GhostKey is designed for readers who want fewer interruptions without giving up control. It does not remove cookie consent banners, provide access to paid content, collect browsing history, send page content to developer servers, use analytics, or require an account.

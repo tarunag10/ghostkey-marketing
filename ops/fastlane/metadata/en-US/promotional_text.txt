@@ -1,0 +1,1 @@
+Hide intrusive sign-in prompts, restore page scrolling, and control GhostKey per site without accounts, analytics, or tracking.
