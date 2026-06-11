@@ -15,7 +15,7 @@ def metadata_root
 end
 
 def review_root
-  File.expand_path("review_information", __dir__)
+  File.expand_path("metadata/review_information", __dir__)
 end
 
 def require_env!(name)
@@ -87,12 +87,17 @@ platform :ios do
 
   lane :submit_review do
     preflight_base
-    require_env!("APP_REVIEW_CONTACT_EMAIL")
-    require_env!("APP_REVIEW_CONTACT_PHONE")
+    review_info = {
+      first_name: ENV.fetch("APP_REVIEW_CONTACT_FIRST_NAME", "Tarun"),
+      last_name: ENV.fetch("APP_REVIEW_CONTACT_LAST_NAME", "Agarwal"),
+      email_address: ENV.fetch("APP_REVIEW_CONTACT_EMAIL", "tarunag10@gmail.com")
+    }
+    review_info[:phone_number] = ENV["APP_REVIEW_CONTACT_PHONE"] unless ENV["APP_REVIEW_CONTACT_PHONE"].to_s.strip.empty?
     deliver(
       api_key: app_store_api_key,
       app_identifier: ENV.fetch("APP_IDENTIFIER"),
       metadata_path: "metadata",
+      app_review_information: review_info,
       submission_information: {
         add_id_info_uses_idfa: false
       },

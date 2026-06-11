@@ -27,6 +27,18 @@ APP_REVIEW_CONTACT_EMAIL=[FILL: App Review contact email]
 APP_REVIEW_CONTACT_PHONE=[FILL: App Review contact phone including country code]
 ```
 
+Fastlane reads committed review notes from:
+
+```text
+ops/fastlane/metadata/review_information/notes.txt
+```
+
+Do not commit the private phone number. If Apple requires a phone value during final submission, either export `APP_REVIEW_CONTACT_PHONE` before running `submit_review`, or create the ignored local file:
+
+```text
+ops/fastlane/metadata/review_information/phone_number.txt
+```
+
 ## Preflight
 
 ```bash
@@ -63,7 +75,7 @@ cd ops/fastlane
 fastlane ios submit_review
 ```
 
-This uses App Store Connect API authentication and submits the prepared metadata for review. If Apple requires a new build, upload the build first from the GhostKey app repository, then rerun the submit lane.
+This uses App Store Connect API authentication and submits the prepared metadata for review. If App Store Connect does not already have a review contact phone number, set `APP_REVIEW_CONTACT_PHONE` before running this lane. If Apple requires a new build, upload the build first from the GhostKey app repository, then rerun the submit lane.
 
 ## Error handling
 

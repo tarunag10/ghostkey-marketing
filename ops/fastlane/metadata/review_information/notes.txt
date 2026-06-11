@@ -22,6 +22,7 @@ GhostKey is not a tool for accessing paid content. It does not remove cookie con
 
 Support URL: https://tarunag10.github.io/GhostKey/support.html
 Privacy Policy: https://tarunag10.github.io/GhostKey/privacy-policy.html
+Marketing URL: https://ghostkey-marketing.vercel.app
 Bundle ID: com.tarunagarwal.ghostkey
 Extension Bundle ID: com.tarunagarwal.ghostkey.Extension
 Version: 1.0
