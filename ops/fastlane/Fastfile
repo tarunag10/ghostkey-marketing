@@ -52,7 +52,7 @@ end
 
 platform :ios do
   lane :preflight do
-    require_env!("APP_IDENTIFIER")
+    ENV["APP_IDENTIFIER"] = "com.tarunagarwal.ghostkey" if ENV["APP_IDENTIFIER"].to_s.strip.empty?
     require_env!("ASC_API_KEY_ID")
     require_env!("ASC_ISSUER_ID")
     require_env!("ASC_API_KEY_PATH")
