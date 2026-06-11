@@ -32,6 +32,10 @@ def app_store_api_key
   )
 end
 
+def ensure_app_identifier!
+  ENV["APP_IDENTIFIER"] = "com.tarunagarwal.ghostkey" if ENV["APP_IDENTIFIER"].to_s.strip.empty?
+end
+
 def validate_copy!
   files = Dir[File.join(metadata_root, "**", "*")] + Dir[File.join(review_root, "**", "*")]
   text = files.select { |path| File.file?(path) }.map { |path| File.read(path) }.join("\n").downcase
@@ -51,19 +55,21 @@ def validate_copy!
 end
 
 platform :ios do
-  lane :preflight do
-    ENV["APP_IDENTIFIER"] = "com.tarunagarwal.ghostkey" if ENV["APP_IDENTIFIER"].to_s.strip.empty?
+  private_lane :preflight_base do
+    ensure_app_identifier!
     require_env!("ASC_API_KEY_ID")
     require_env!("ASC_ISSUER_ID")
     require_env!("ASC_API_KEY_PATH")
-    require_env!("APP_REVIEW_CONTACT_EMAIL")
-    require_env!("APP_REVIEW_CONTACT_PHONE")
     validate_copy!
     UI.success("GhostKey App Store metadata preflight passed.")
   end
 
+  lane :preflight do
+    preflight_base
+  end
+
   lane :metadata_only do
-    preflight
+    preflight_base
     deliver(
       api_key: app_store_api_key,
       app_identifier: ENV.fetch("APP_IDENTIFIER"),
@@ -74,12 +80,15 @@ platform :ios do
       force: true,
       submit_for_review: false,
       skip_binary_upload: true,
-      skip_screenshots: true
+      skip_screenshots: true,
+      precheck_include_in_app_purchases: false
     )
   end
 
   lane :submit_review do
-    preflight
+    preflight_base
+    require_env!("APP_REVIEW_CONTACT_EMAIL")
+    require_env!("APP_REVIEW_CONTACT_PHONE")
     deliver(
       api_key: app_store_api_key,
       app_identifier: ENV.fetch("APP_IDENTIFIER"),
@@ -91,7 +100,8 @@ platform :ios do
       submit_for_review: true,
       automatic_release: false,
       skip_binary_upload: true,
-      skip_screenshots: true
+      skip_screenshots: true,
+      precheck_include_in_app_purchases: false
     )
   rescue => error
     UI.user_error!("GhostKey Apple resubmission failed: #{error.message}")
