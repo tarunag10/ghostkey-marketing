@@ -4,7 +4,7 @@
   "private": true,
   "description": "GTM marketing website for GhostKey.",
   "scripts": {
-    "build": "node scripts/validate-site.mjs",
+    "build": "node scripts/build-site.mjs",
     "dev": "python3 -m http.server 4173",
     "validate": "node scripts/validate-site.mjs"
   },
