@@ -5,6 +5,7 @@ GTM marketing website for GhostKey, a Safari extension that helps reduce intrusi
 ## Live Links
 
 - Download: Add the approved App Store URL in `site.config.json` after the app is available.
+- Marketing Site: https://ghostkey-marketing.vercel.app
 - Privacy Policy: https://tarunag10.github.io/GhostKey/privacy-policy.html
 - Support: https://tarunag10.github.io/GhostKey/support.html
 

@@ -50,6 +50,12 @@ fastlane ios metadata_only
 
 This updates App Store Connect metadata without submitting for review.
 
+The marketing URL in metadata is:
+
+```text
+https://ghostkey-marketing.vercel.app
+```
+
 ## Submit for review
 
 ```bash
